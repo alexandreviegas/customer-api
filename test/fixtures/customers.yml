@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cliente_1:
+  legal_name: Cliente 1
+  phone_number: 1134567890
+  address: Endereço
+  address_number: 999
+  complement: Complemento
+  neighbourhood: Bairro
+  city: Cidade
+  state: Estado
+  postal_code: 66789087
+  register_date: 2022-01-04
+  declared_revenues: 99999.99
+
+cliente_2:
+  legal_name: Cliente 2
+  phone_number: 9198765432
+  address: Endreço
+  address_number: 987
+  complement: Complemento
+  neighbourhood: Bairro
+  city: Cidade
+  state: Estado
+  postal_code: 66786432
+  register_date: 2022-01-04
+  declared_revenues: 98989.99

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: cliente_1
+  bank_code: 001
+  agency_code: 12345
+  account_number: 12345678
+
+two:
+  customer: cliente_2
+  bank_code: 002
+  agency_code: 1234W
+  account_number: 124578
