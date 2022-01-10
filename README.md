@@ -100,6 +100,8 @@ Conjunto de dados básicos de um cliente:
       ```
       curl --location --request DELETE 'http://localhost:3000/api/v1/customers/:customer_id/bank_accounts/:id' \
       ```
+## Testes via Postman - Arquivo para importação
+[customers-api.postman_collection.json](/customers-api.postman_collection.json)
 
 ## Instruções para executar a aplicação
 
