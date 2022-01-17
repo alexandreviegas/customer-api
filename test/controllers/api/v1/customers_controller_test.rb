@@ -8,12 +8,12 @@ module Api
         @customer.legal_name = "Test Customer"
       end
 
-      test "should get index" do
+      test "should list all customers" do
         get api_v1_customers_url, as: :json
         assert_response :success
       end
 
-      test "should create customer" do
+      test "should create a customer" do
         assert_difference("Customer.count", 1, "Customer not created") do
           post api_v1_customers_url, params: {
             customer: {
@@ -33,12 +33,19 @@ module Api
         assert_response :created
       end
 
-      test "should show customer" do
+      test "should return a customer" do
         get api_v1_customer_url(@customer), as: :json
         assert_response :success
       end
 
-      test "should update customer" do
+      test "should return 404 when customer doesn't exist" do
+        customer = Customer.new
+        customer.id = 0
+        get api_v1_customer_url(customer), as: :json
+        assert_response :not_found
+      end
+
+      test "should update a customer" do
         patch api_v1_customer_url(@customer), params: {
           customer: {
             legal_name: @customer.legal_name,
@@ -55,7 +62,7 @@ module Api
         assert_response :success
       end
 
-      test "should destroy customer" do
+      test "should delete a customer" do
         assert_difference("Customer.count", -1) do
           delete api_v1_customer_url(@customer), as: :json
         end
