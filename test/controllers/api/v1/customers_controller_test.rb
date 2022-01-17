@@ -42,7 +42,8 @@ module Api
         customer = Customer.new
         customer.id = 0
         get api_v1_customer_url(customer), as: :json
-        assert_response :not_found
+        assert_response :missing
+        assert_includes @response.body, "Couldn't find Customer with 'id'=0"
       end
 
       test "should update a customer" do

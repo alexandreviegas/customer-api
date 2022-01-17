@@ -36,6 +36,7 @@ module Api
         customer.id = 0
         get api_v1_customer_bank_account_url(customer, @bank_account), as: :json
         assert_response :not_found
+        assert_includes @response.body, "Couldn't find Customer with 'id'=0"
       end
 
       test "should return 404 when bank_account doesn't exist" do
@@ -43,6 +44,7 @@ module Api
         bank_account.id = 0
         get api_v1_customer_bank_account_url(@customer, bank_account), as: :json
         assert_response :not_found
+        assert_includes @response.body, "Couldn't find BankAccount with 'id'=0"
       end
 
       test "should update a bank_account from a customer" do
