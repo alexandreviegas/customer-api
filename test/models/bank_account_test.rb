@@ -8,19 +8,23 @@ class BankAccountTest < ActiveSupport::TestCase
   test "should not save a bank account without customer" do
     @bank_account_nok = bank_accounts(:one)
     @bank_account_nok.customer = nil
-    assert_not @bank_account_nok.save
+    assert_not @bank_account_nok.valid?
+    assert_includes @bank_account_nok.errors.messages[:customer], 'must exist'
+
   end
 
   test "bank code should be numeric" do
     @bank_account_nok = bank_accounts(:one)
     @bank_account_nok.bank_code = "12AD"
-    assert_not @bank_account_nok.save
+    assert_not @bank_account_nok.valid?
+    assert_includes @bank_account_nok.errors.messages[:bank_code], 'is not a number'
   end
 
   test "account number code should be numeric" do
     @bank_account_nok = bank_accounts(:one)
     @bank_account_nok.account_number = "1234t5t5"
-    assert_not @bank_account_nok.save
+    assert_not @bank_account_nok.valid?
+    assert_includes @bank_account_nok.errors.messages[:account_number], 'is not a number'
   end
 
   test "should have only one bank account with same bank, agency and account number" do
@@ -37,6 +41,7 @@ class BankAccountTest < ActiveSupport::TestCase
     @bank_account_nok.agency_code = '1234'
     @bank_account_nok.account_number = '123456'
     assert_not @bank_account_nok.save
+    assert_includes @bank_account_nok.errors.messages[:account_number], 'has already been taken'
 
   end
 
@@ -60,7 +65,8 @@ class BankAccountTest < ActiveSupport::TestCase
     @bank_account_nok.bank_code = '1234'
     @bank_account_nok.agency_code = '12346A'
     @bank_account_nok.account_number = '123467'
-    assert_not @bank_account_nok.save
+    assert_not @bank_account_nok.valid?
+    assert_includes @bank_account_nok.errors.messages[:agency_code], 'agency check digit must be a number or a X'
 
   end
 end

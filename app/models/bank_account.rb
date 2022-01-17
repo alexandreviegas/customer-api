@@ -8,7 +8,7 @@ class BankAccount < ApplicationRecord
   validates_numericality_of :bank_code, :account_number
 
   # agency codes may have a number or a X char on check digit
-  validates :agency_code, format: { with: /\A\d+X?\z/, message: "Agency check digit must be a number or a X"}
+  validates :agency_code, format: { with: /\A\d+X?\z/, message: 'agency check digit must be a number or a X'}
 
   # it's not allowed to insert more than one account with the same bank, agency and number
   validates_uniqueness_of :account_number, scope: [:bank_code, :agency_code]
