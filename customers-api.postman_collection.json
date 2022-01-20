@@ -414,6 +414,11 @@
 	],
 	"variable": [
 		{
+			"key": "api",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
 			"key": "customer_id",
 			"value": "",
 			"type": "string"
